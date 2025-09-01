@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Visa Application Document Upload</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/personal-details.css">
+</head>
+
+<body>
+    <main>
+        <h1>Visa Application - Document Submission</h1>
+        <div class="centered-form-container">
+            <div class="personal-details-box">
+                <form id="personalDetailsForm">
+                    <h2>Personal details for Donna Roundtree</h2>
+                    <div>
+                        <label for="refNo"><strong>Ref No.</strong></label><br>
+                        <input type="text" id="refNo" name="refNo" value="2554987012" readonly>
+                    </div>
+                    <div>
+                        <label for="accommodation">Proof of accommodation<span
+                                style="font-size: 90%; color: #555;">(Airbnb receipts or booking no.)</span></label><br>
+                        <input type="text" id="accommodation" name="accommodation">
+                    </div>
+                    <div>
+                        <label>Bank Statement (last 3 months):
+                            <input type="file" name="bankStatement" required>
+                        </label><br>
+                        <!-- <input type="text" id="bankStatement" name="bankStatement"> -->
+                    </div>
+                    <fieldset>
+                        <legend>Guarantor details (if applicable)</legend>
+                        <label for="guarantorName">Full name</label><br>
+                        <input type="text" id="guarantorName" name="guarantorName"><br>
+                        <label for="guarantorPhone">Telephone</label><br>
+                        <input type="text" id="guarantorPhone" name="guarantorPhone"><br>
+                        <label for="guarantorAddress">Address</label><br>
+                        <input type="text" id="guarantorAddress" name="guarantorAddress"><br>
+                        <label for="residentsAddress">Residents address</label><br>
+                        <input type="text" id="residentsAddress" name="residentsAddress">
+                    </fieldset>
+                    <button type="submit" id="proceedBtn">Proceed</button>
+                    <script>
+                        const form = document.getElementById('personalDetailsForm');
+                        const proceedBtn = document.getElementById('proceedBtn');
+                        const requiredFields = [
+                            'accommodation',
+                            'bankStatement',
+                            'guarantorName',
+                            'guarantorPhone',
+                            'guarantorAddress',
+                            'residentsAddress'
+                        ];
+                        // Disable button initially
+                        proceedBtn.disabled = true;
+                        // Helper to check if all required fields are filled
+                        function checkFormComplete() {
+                            let complete = true;
+                            requiredFields.forEach(id => {
+                                const el = document.getElementById(id);
+                                if (el) {
+                                    if (el.type === 'file') {
+                                        if (!el.files || el.files.length === 0) complete = false;
+                                    } else {
+                                        if (!el.value.trim()) complete = false;
+                                    }
+                                }
+                            });
+                            proceedBtn.disabled = !complete;
+                        }
+                        // Listen for input changes
+                        requiredFields.forEach(id => {
+                            const el = document.getElementById(id);
+                            if (el) {
+                                el.addEventListener('input', checkFormComplete);
+                                if (el.type === 'file') {
+                                    el.addEventListener('change', checkFormComplete);
+                                }
+                            }
+                        });
+                        // Prevent navigation if incomplete
+                        proceedBtn.onclick = function (e) {
+                            checkFormComplete();
+                            if (proceedBtn.disabled) {
+                                e.preventDefault();
+                                alert('Please fill all required fields before proceeding.');
+                                return false;
+                            }
+                            e.preventDefault();
+                            window.location.href = 'payment.html';
+                        };
+                    </script>
+                </form>
+            </div>
+        </div>
+        <form id="visaForm" enctype="multipart/form-data">
+    </main>
+</body>
+
+</html>

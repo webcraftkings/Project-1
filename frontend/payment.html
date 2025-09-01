@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visa Payment Details</title>
+  <link rel="stylesheet" href="assets/payment-box.css">
+</head>
+<body>
+  <main>
+    <div class="payment-box">
+      <h2>Visa Application Fees & Charges</h2>
+      <ul>
+        <li><strong>Visa Application fee (Schengen)</strong> <span class="fee">€150</span><br>
+          <span class="desc">Standard fee for adults (aged 18+)<br>(Covers 6 month stay)</span>
+        </li>
+        <li><strong>Service charge</strong> <span class="fee">€50</span></li>
+        <li><strong>Travel medical Insurance</strong> <span class="fee">€150</span><br>
+          <span class="desc">Must cover at least €30,000 for medical expenses & repatriation;<br>cost varies with duration and provider.</span>
+        </li>
+      </ul>
+      <button id="payBtn">Pay</button>
+    </div>
+    <script>
+      document.getElementById('payBtn').onclick = function() {
+        window.location.href = 'pay.html';
+      };
+    </script>
+  </main>
+</body>
+</html>
