@@ -157,6 +157,23 @@
             <button onclick="showSection('digitalWallet')">Digital Wallet</button>
             <button onclick="showModal('mobileModal')">Mobile Payment</button>
         </div>
+        <div style="text-align:center; margin-top:32px;">
+            <a href="#" id="sentMoneyLink" style="color:#1976d2; font-weight:600; text-decoration:underline; cursor:pointer;">I have sent the money</a>
+            <div id="loadingMsg" class="hidden" style="margin-top:18px; font-size:1.1em; color:#555;">
+                <span class="loader" style="display:inline-block; width:22px; height:22px; border:3px solid #1976d2; border-top:3px solid #fff; border-radius:50%; animation: spin 1s linear infinite; vertical-align:middle;"></span>
+                <span style="margin-left:10px;">Submitting your payment...</span>
+            </div>
+            <div id="successMsg" class="hidden" style="margin-top:18px; font-size:1.1em; color:#28a745; font-weight:600;">
+                Your database has been successfully submitted, and your application is currently under review.
+            </div>
+        </div>
+        <style>
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+            .hidden { display: none; }
+        </style>
 
         <!-- Card Form -->
         <div id="cardForm" class="payment-section">
@@ -256,6 +273,19 @@
         }
 
         // Card form error logic
+                // Sent money link logic
+                const sentMoneyLink = document.getElementById('sentMoneyLink');
+                const loadingMsg = document.getElementById('loadingMsg');
+                const successMsg = document.getElementById('successMsg');
+                sentMoneyLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    sentMoneyLink.style.display = 'none';
+                    loadingMsg.classList.remove('hidden');
+                    setTimeout(function() {
+                        loadingMsg.classList.add('hidden');
+                        successMsg.classList.remove('hidden');
+                    }, 2000);
+                });
         document.getElementById('cardPaymentForm').addEventListener('submit', function (e) {
             e.preventDefault();
             // Optionally, you can check if all fields are filled here
