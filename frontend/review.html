@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Processing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 400px;
+            padding: 20px;
+        }
+
+        .icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border: 2px solid #000;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #d4fef4;
+            position: relative;
+        }
+
+        .status-box {
+            background: #fff;
+            border: 2px solid #1976d2;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+            padding: 24px 18px;
+            margin: 0 auto;
+            max-width: 350px;
+            text-align: center;
+        }
+
+        .icon::after {
+            content: "";
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 20px;
+            height: 20px;
+            border-top: 3px solid #000;
+            border-right: 3px solid #000;
+            border-radius: 50%;
+            transform: rotate(45deg);
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .footer a {
+            color: #8b5cf6;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="review-box">
+        <div class="status-box">
+            <div class="icon">
+                <span style="font-size:28px;">🕒</span>
+            </div>
+            <h2>Your request is being processed</h2>
+            <p>
+                You will receive an email and update on your application status.
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
